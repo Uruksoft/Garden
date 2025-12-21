@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة أبطال الحديقة | URUK SOFT</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body class="light-theme">
+
+    <div class="news-ticker">
+        <div class="ticker-wrapper">
+            <span id="ticker-text">أهلاً بكم في منصة أوروك سوفت.. سجل نتائجك الآن!</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="header-top">
+                <button id="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
+                <div id="date-display"></div>
+            </div>
+            <div class="logo-area">
+                <i class="fas fa-trophy bounce"></i>
+                <h1>بطولة الحديقة</h1>
+            </div>
+        </header>
+
+        <div class="card team-control">
+            <div class="type-selector">
+                <label><input type="radio" name="playerType" value="single" checked onclick="toggleInputs()"> فردي</label>
+                <label><input type="radio" name="playerType" value="team" onclick="toggleInputs()"> تيم</label>
+            </div>
+            <input type="hidden" id="editIndex" value="-1">
+            <div class="input-group">
+                <input type="text" id="p1" placeholder="الاسم الأول">
+                <input type="text" id="p2" placeholder="الاسم الثاني" style="display:none;">
+                <button id="submitBtn" onclick="handleTeamSubmit()"><i class="fas fa-plus"></i></button>
+            </div>
+        </div>
+
+        <div class="card match-card">
+            <h3>تسجيل نتيجة المباراة</h3>
+            <div class="selectors">
+                <select id="t1Select" onchange="checkHeadToHead()"><option value="">المنافس الأول</option></select>
+                <span class="vs">VS</span>
+                <select id="t2Select" onchange="checkHeadToHead()"><option value="">المنافس الثاني</option></select>
+            </div>
+            <div id="h2h-info" class="h2h-badge">تحليل المواجهات المباشرة ⚔️</div>
+
+            <div class="result-options">
+                <label class="radio-btn win"><input type="radio" name="matchRes" value="win" checked><span>فوز</span></label>
+                <label class="radio-btn draw"><input type="radio" name="matchRes" value="draw"><span>تعادل</span></label>
+                <label class="radio-btn loss"><input type="radio" name="matchRes" value="loss"><span>خسارة</span></label>
+            </div>
+            <button class="save-btn" onclick="saveMatch()">حفظ النتيجة 🚀</button>
+        </div>
+
+        <div class="card stats-card">
+            <h3><i class="fas fa-list-ol"></i> الترتيب العام</h3>
+            <div id="leaderboard-ui"></div>
+        </div>
+
+        <footer>
+            <div class="dev-box">
+                <p>جميع الحقوق محفوظة &copy; 2025</p>
+                <p><b>أوروك سوفت (URUK SOFT)</b></p>
+                <p>المطور: <b>مرتضى حسين</b></p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
